@@ -42,16 +42,13 @@ horror_movies %>%
                                  unit = "days")) %>%
   ggplot(aes(x = to_halloween)) +
   geom_density(fill = "white") +
-  geom_vline(xintercept = 0, color = "orange", lty = "dashed") +
-  geom_point(data = data.frame(x = sample(300:-50, 75),
+  geom_vline(xintercept = 0, color = "orange", lty = "dashed") + #vline for halloween
+  geom_point(data = data.frame(x = sample(300:-50, 75), # 50 randomly generated stars
                                y = sample(seq(0.001, 0.005, by = 0.0001), 75, replace = TRUE)),
-             aes(x = x,
-                 y = y),
-             shape = 8,
-             color = "white",
-             size = sample(seq(.1, .4, .001), 75, replace = TRUE)) +
-  geom_point(aes(x = 285, y = 0.005), size = 11, color = "#dce736", shape = 19) +
-  scale_x_reverse(name = "Days to Halloween",
+             aes(x = x, y = y), 
+             shape = 8, color = "white", size = sample(seq(.1, .4, .001), 75, replace = TRUE)) +
+  geom_point(aes(x = 285, y = 0.005), size = 11, color = "#dce736", shape = 19) + # the moon
+  scale_x_reverse(name = "Days to Halloween", # scale_x_continuous defaults to ascending
                      breaks = seq(300, 0, -30),
                   expand = expand_scale(add = c(0, 0))) +
   scale_y_continuous(name = "Horror Movies",
@@ -64,4 +61,3 @@ horror_movies %>%
         axis.text.y = element_blank(),
       plot.title = element_text(hjust = 0.5)) +
   ggtitle("Spooky Szn")
-
