@@ -72,4 +72,4 @@ ggmap(
 animate(p,
         nframes = 100,
         fps = 10,
-        detail = 25)
+        detail = 10)
